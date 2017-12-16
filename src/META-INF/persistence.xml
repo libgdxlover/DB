@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="misdb" transaction-type="RESOURCE_LOCAL">
+		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>		
+		<!-- tomcat -->
+		
+		<non-jta-data-source>java:comp/env/jdbc/blog</non-jta-data-source> 
+		
+		
+		<!-- weblogic -->
+		<!--<non-jta-data-source>SWDS</non-jta-data-source>-->
+		<class>db.domain.SysUser</class>
+       	   
+		<properties>
+			<!-- 
+			<property name="openjpa.ClassLoadEnhancement" value="false" />
+			<property name="openjpa.DynamicEnhancementAgent" value="false" />
+			<property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
+			-->
+			<property name="openjpa.jdbc.DBDictionary" value="mysql" />
+			<property name="openjpa.jdbc.UpdateManager" value="operation-order" />
+			<property name="openjpa.IgnoreChanges" value="true" />
+			<property name="openjpa.QueryCache" value="false" />
+			<property name="openjpa.QueryCompilationCache" value="true" />	
+			<!--显示SQL执行语句-->
+            <property name="openjpa.Log" value="SQL=TRACE"/>		
+		</properties>
+	</persistence-unit>
+</persistence>
